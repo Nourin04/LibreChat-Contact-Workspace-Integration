@@ -449,6 +449,21 @@ export const toolDefinitions: Record<string, ToolRegistryDefinition> = {
     toolType: 'builtin',
     responseFormat: geminiToolkit.gemini_image_gen.responseFormat,
   },
+  get_contacts: {
+    name: 'get_contacts',
+    description: "Search and retrieve contacts from the user's contact workspace. Use this tool when the user asks about people, companies, roles, or any contact information.",
+    schema: {
+      type: 'object',
+      properties: {
+        query: {
+          type: 'string',
+          description: 'The search query to look up contacts by name, company, role, email, etc. Pass an empty string to get all contacts.',
+        },
+      },
+      required: ['query'],
+    },
+    toolType: 'builtin',
+  },
 };
 
 /** Tool definitions from @librechat/agents */

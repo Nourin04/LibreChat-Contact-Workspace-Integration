@@ -166,5 +166,12 @@
         "optional": true
       }
     ]
+  },
+  {
+    "name": "Contacts Workspace",
+    "pluginKey": "get_contacts",
+    "description": "Access the user's personal Contacts Workspace to look up people, companies, roles, and other contact information.",
+    "icon": "assets/address-book.svg",
+    "authConfig": []
   }
 ]

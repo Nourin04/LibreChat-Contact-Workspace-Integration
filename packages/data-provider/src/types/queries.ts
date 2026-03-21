@@ -206,3 +206,38 @@ export type GraphTokenResponse = {
   expires_in: number;
   scope: string;
 };
+
+/* Contacts */
+export type TContact = {
+  _id: string;
+  userId: string;
+  name: string;
+  company?: string;
+  role?: string;
+  email?: string;
+  notes?: string;
+  attributes: Record<string, string>;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ContactParams = {
+  name: string;
+  company?: string;
+  role?: string;
+  email?: string;
+  notes?: string;
+  attributes?: Record<string, string>;
+};
+
+export type ContactListParams = {
+  cursor?: string;
+  search?: string;
+  limit?: number;
+};
+
+export type ContactListResponse = {
+  contacts: TContact[];
+  nextCursor: string | null;
+  hasNextPage: boolean;
+};

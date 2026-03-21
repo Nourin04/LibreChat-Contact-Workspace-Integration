@@ -24,6 +24,7 @@ export enum Tools {
   function = 'function',
   memory = 'memory',
   ui_resources = 'ui_resources',
+  get_contacts = 'get_contacts',
 }
 
 export enum EToolResources {

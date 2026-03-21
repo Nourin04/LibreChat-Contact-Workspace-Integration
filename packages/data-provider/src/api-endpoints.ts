@@ -438,3 +438,9 @@ export const getAllEffectivePermissions = (resourceType: ResourceType) =>
 // SharePoint Graph API Token
 export const graphToken = (scopes: string) =>
   `${BASE_URL}/api/auth/graph-token?scopes=${encodeURIComponent(scopes)}`;
+
+/* Contacts */
+export const contacts = () => `${BASE_URL}/api/contacts`;
+export const contactById = (id: string) => `${contacts()}/${id}`;
+export const contactsSearch = (q: string) => `${contacts()}/search?q=${encodeURIComponent(q)}`;
+export const contactsImport = () => `${contacts()}/import`;

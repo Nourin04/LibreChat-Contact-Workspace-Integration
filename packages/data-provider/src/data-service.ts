@@ -1085,3 +1085,32 @@ export interface ActiveJobsResponse {
 export const getActiveJobs = (): Promise<ActiveJobsResponse> => {
   return request.get(endpoints.activeJobs());
 };
+
+/* Contacts */
+export const getContacts = (params?: q.ContactListParams): Promise<q.ContactListResponse> => {
+  return request.get(endpoints.contacts(), { params });
+};
+
+export const searchContacts = (query: string): Promise<q.ContactListResponse> => {
+  return request.get(endpoints.contactsSearch(query));
+};
+
+export const getContactById = (id: string): Promise<q.TContact> => {
+  return request.get(endpoints.contactById(id));
+};
+
+export const createContact = (data: q.ContactParams): Promise<q.TContact> => {
+  return request.post(endpoints.contacts(), data);
+};
+
+export const updateContact = (id: string, data: q.ContactParams): Promise<q.TContact> => {
+  return request.patch(endpoints.contactById(id), data);
+};
+
+export const deleteContact = (id: string): Promise<void> => {
+  return request.delete(endpoints.contactById(id));
+};
+
+export const importContacts = (data: FormData): Promise<{ imported: number; errors: any[] }> => {
+  return request.postMultiPart(endpoints.contactsImport(), data);
+};
