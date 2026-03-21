@@ -4,7 +4,7 @@ This repository contains the implementation of a full-stack **Contact Workspace*
 
 ---
 
-## 🚀 Features
+##  Features
 
 ### 1. Contact Management UI
 - **Unified Sidebar**: A dedicated "Contacts" entry in the sidebar for easy access without leaving the chat.
@@ -23,7 +23,7 @@ This repository contains the implementation of a full-stack **Contact Workspace*
 
 ---
 
-## 🛠 Detailed Implementation Changes
+## Implementation Changes
 
 ### Core Logic & Data Modeling
 1. **[NEW] `packages/api/src/contacts/`**:
@@ -54,7 +54,7 @@ This repository contains the implementation of a full-stack **Contact Workspace*
 
 ---
 
-## 📐 Architecture Explanation
+##  Architecture Explanation
 
 LibreChat follows a **monorepo** architecture where the frontend (`/client`) and backend (`/api`) share logic via specialized packages. This implementation leverages that structure:
 
@@ -64,7 +64,7 @@ LibreChat follows a **monorepo** architecture where the frontend (`/client`) and
 
 ---
 
-## ⚙️ Detailed Setup & Installation
+##  Detailed Setup & Installation
 
 ### Prerequisites
 - **Node.js**: v20.19.0+ or ^22.12.0
@@ -116,7 +116,7 @@ Open two terminal windows:
 
 ---
 
-## 📝 Design Questions
+##  Design Questions
 
 ### 1. If the system needed to support 1,000,000 contacts, how would you redesign it?
 At this scale, standard regex searches in MongoDB become slow. A production-ready redesign would include:
