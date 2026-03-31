@@ -12,7 +12,7 @@ This repository contains the implementation of a full-stack **Contact Workspace*
 - **Detail View**: Support for core fields (Name, Company, Role, Email) and arbitrary metadata attributes (Tags, Location, Industry, etc.).
 
 ### 2. High-Performance CSV Ingestion
-- **Streaming Architecture**: Implemented using Node.js `fs` and `csv-parse` streams to handle datasets from 1k up to 1M contacts without memory overflows.
+- **Scalable Architecture:**: Leverages Node.js streaming for CSV parsing and MongoDB bulk operations, laying the foundation for handling datasets of up to 1 million contacts.
 - **Metadata Mapping**: Automatic detection and storage of non-standard CSV columns as searchable contact attributes.
 
 ### 3. AI Agent "Contact Tool"
