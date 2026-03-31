@@ -230,7 +230,11 @@ export type ContactParams = {
   attributes?: Record<string, string>;
 };
 
+export type CreateContactParams = ContactParams;
+export type UpdateContactParams = ContactParams;
+
 export type ContactListParams = {
+  page?: number;
   cursor?: string;
   search?: string;
   limit?: number;

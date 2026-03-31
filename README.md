@@ -12,7 +12,7 @@ This repository contains the implementation of a full-stack **Contact Workspace*
 - **Detail View**: Support for core fields (Name, Company, Role, Email) and arbitrary metadata attributes (Tags, Location, Industry, etc.).
 
 ### 2. High-Performance CSV Ingestion
-- **Scalable Architecture:**: Leverages Node.js streaming for CSV parsing and MongoDB bulk operations, laying the foundation for handling datasets of up to 1 million contacts.
+- **Streaming Architecture**: Leverages Node.js streaming for CSV parsing and MongoDB bulk operations, laying the foundation for handling datasets of up to 1 million contacts.
 - **Metadata Mapping**: Automatic detection and storage of non-standard CSV columns as searchable contact attributes.
 
 ### 3. AI Agent "Contact Tool"
@@ -27,13 +27,13 @@ This repository contains the implementation of a full-stack **Contact Workspace*
 
 ---
 
-## Implementation Changes
+##  Detailed Implementation Changes
 
 ### Core Logic & Data Modeling
 1. **[NEW] `packages/api/src/contacts/`**:
    - `model.ts`: Defined the Mongoose schema for contacts.
    - Included core fields: `name`, `company`, `role`, `email`, `notes`.
-   - Added a `metadata: Schema.Types.Mixed` field to handle arbitrary attributes dynamically.
+   - Added an **`attributes: Schema.Types.Mixed`** field to handle arbitrary attributes dynamically.
 2. **[NEW] `packages/api/src/tools/getContactsTool.ts`**:
    - Built the LangChain tool definition for the `get_contacts` operation.
    - Defined the JSON Schema for the `query` parameter.
@@ -50,6 +50,7 @@ This repository contains the implementation of a full-stack **Contact Workspace*
 - **[NEW] `client/src/components/SidePanel/Contacts/`**:
   - `ContactPanel.tsx`: Main container for the sidebar feature.
   - `ContactList.tsx`: Efficient list rendering with search filtering.
+  - `ContactCard.tsx`: Reusable component for displaying contact summaries.
   - `ContactDetailModal.tsx`: Detailed view for core fields and arbitrary metadata.
   - `ContactImport.tsx`: File upload interface for CSV data.
 - **[NEW] `client/src/data-provider/Contacts/`**: Added `queries.ts` for React Query integration.
@@ -62,9 +63,9 @@ This repository contains the implementation of a full-stack **Contact Workspace*
 
 LibreChat follows a **monorepo** architecture where the frontend (`/client`) and backend (`/api`) share logic via specialized packages. This implementation leverages that structure:
 
-1.  **Data Layer**: MongoDB stores contacts. The **Mixed** schema type is critical—it allows us to store "Industry" for one contact and "Funding Stage" for another without modifying the database schema.
+1.  **Data Layer**: MongoDB stores contacts. The **attributes (Mixed)** schema type is critical—it allows us to store "Industry" for one contact and "Funding Stage" for another without modifying the database schema.
 2.  **Tooling Layer**: We use the **Structured Tool** pattern. When a user asks "Who works at Stripe?", the LLM identifies the `get_contacts` tool from its manifest, generates the search query `{"query": "Stripe"}`, and the backend executes this against MongoDB.
-3.  **Search Logic**: The current search uses a case-insensitive regex match across multiple fields (`name`, `company`, `role`, `email`, `metadata`). This ensures that even arbitrary attributes are searchable.
+3.  **Search Logic**: The current search uses a case-insensitive regex match across multiple fields (`name`, `company`, `role`, `email`, `attributes`). This ensures that even arbitrary attributes are searchable.
 
 ---
 
